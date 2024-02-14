@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState } from "react";
 import "../Styles/CarCards.css"; 
 import carData from "../Data/carData.json";
 import formFields from "../Data/formFields.json";
@@ -51,7 +51,7 @@ const CarCards = () => {
     setFormData({});
     setShowForm(false);
   };
-  
+
   return (
     <div className="car-grid">
       <div className="row">
@@ -61,7 +61,7 @@ const CarCards = () => {
               className="card car-item shadow"
               onClick={() => handleCarItemClick(car)}
             >
-              <img src={car.logo} className="card-img-top" alt={car.model} />
+              <img src={process.env.PUBLIC_URL +car.logo} className="card-img-top" alt={car.model} />
               <div className="card-body">
                 <h5 className="card-title text-secondary">{car.model}</h5>
               </div>
@@ -114,7 +114,7 @@ const CarCards = () => {
                 </div>
                 <div className="row">
                   <div className="col-md-12 mt-4">
-                    <button type="submit" className="btn btn-primary">
+                    <button type="submit" className="btn btn-primary text-center">
                       Submit
                     </button>
                   </div>
@@ -124,7 +124,7 @@ const CarCards = () => {
           </div>
         </div>
       )}
-     {submittedData && (
+     {submittedData.length>0 && submittedData && (
         <div className="row">
           <div className="col-12">
             <h2>Submitted Data:</h2>
